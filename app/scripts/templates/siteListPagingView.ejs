@@ -1,0 +1,5 @@
+<ul>
+  <% _.each(this.collection.models, function(site) { %>
+    <h1><%= site.get('name') %></h1><img src="<%= site.get('logoUrl')  %>"/>
+  <% }); %>
+</ul>
