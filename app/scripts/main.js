@@ -22,6 +22,9 @@ require.config({
     backboneElasticsearchStorage: {
       deps: ['backbone', 'elasticsearch.jquery'],
       exports: 'Store'
+    },
+    templates: {
+      exports: 'JST'
     }
   },
   paths: {
@@ -30,7 +33,8 @@ require.config({
     backbone: '../bower_components/backbone/backbone',
     // 'backbone.paginator': '../bower_components/backbone.paginator/dist/backbone.paginator',
     backboneElasticsearchStorage: 'sync/elasticsearch-sync',
-    text: '../bower_components/requirejs-text/text'
+    text: '../bower_components/requirejs-text/text',
+    templates: '../scripts/templates'
   }
 });
 
@@ -39,7 +43,8 @@ require([
   'views/siteListPagingView',
   'routers/router',
   'models/site',
-  'collections/sites'
+  'collections/sites',
+  'templates'
 ], function (Backbone, AppView, Workspace) {
   /*jshint nonew:false*/
 
