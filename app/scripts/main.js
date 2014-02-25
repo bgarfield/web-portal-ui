@@ -15,10 +15,10 @@ require.config({
       ],
       exports: 'Backbone'
     },
-    // 'backbone.paginator': {
-    //   deps: ['backbone', '_', '$'],
-    //   exports: 'backbone.paginator'
-    // },
+    'backbone.paginator': {
+      deps: ['backbone', 'underscore', 'jquery'],
+      exports: 'Backbone.Paginator'
+    },
     backboneElasticsearchStorage: {
       deps: ['backbone', 'elasticsearch.jquery'],
       exports: 'Store'
@@ -31,7 +31,7 @@ require.config({
     jquery: '../bower_components/jquery/jquery',
     underscore: '../bower_components/underscore/underscore',
     backbone: '../bower_components/backbone/backbone',
-    // 'backbone.paginator': '../bower_components/backbone.paginator/dist/backbone.paginator',
+    'backbone.paginator': '../bower_components/backbone.paginator/dist/backbone.paginator',
     backboneElasticsearchStorage: 'sync/elasticsearch-sync',
     text: '../bower_components/requirejs-text/text',
     templates: '../scripts/templates'
