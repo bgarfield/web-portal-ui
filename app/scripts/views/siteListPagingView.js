@@ -30,7 +30,7 @@ define(['backbone', 'collections/sitesPagingCollection'], function(Backbone, sit
         },
 
         addAll: function() {
-          this.$('#siteList').html('');
+          this.$('#site-list').html('');
           webPortalUi.Collections.sitesCollection.each(this.addOne, this);
         }
         

@@ -46,8 +46,9 @@ require([
   'routers/router',
   'models/site',
   'collections/sites',
-  'templates'
-], function (Backbone, AppView, appRouter, SiteModel, SitesCollection) {
+  'templates',
+  'backbone-logger'
+], function (Backbone, SiteListPagingView, appRouter, SiteModel, SitesCollection, templates, logger) {
   /*jshint nonew:false*/
 
   var webPortalUi = {
@@ -58,6 +59,7 @@ require([
       init: function () {
           'use strict';
           console.log('webPortalUI.init()');
+          this.Models.SiteModel = SiteModel;
 
           // Backbone.emulateHTTP = true;
 
@@ -71,12 +73,12 @@ require([
           this.Collections.sitesCollection = new SitesCollection();
           Backbone.Log.log("Collection size: " + webPortalUi.Collections.sitesCollection.length);
 
-          webPortalUi.Views.pagedSiteListView = new webPortalUi.Views.SiteListPagingView({
-            el: $('#siteList'), 
+          webPortalUi.Views.pagedSiteListView = new SiteListPagingView({
+            el: $('#site-list'), 
             collection: webPortalUi.Collections.sitesCollection
           });
 
-          appRouter = new webPortalUi.Routers.AppRouter();
+          appRouter = new appRouter();
           Backbone.history.start();
 
           $.ajaxSetup({
@@ -95,7 +97,8 @@ require([
       }
   };
 
-  webPortalUi.init();
+  window.webPortalUi = webPortalUi;
+  window.webPortalUi.init();
   return webPortalUi;
 });
 
