@@ -21,7 +21,7 @@ require.config({
     },
     backboneElasticsearchStorage: {
       deps: ['backbone', 'elasticsearch.jquery'],
-      exports: 'Store'
+      exports: 'Backbone.es'
     },
     templates: {
       exports: 'JST'
@@ -31,7 +31,9 @@ require.config({
     jquery: '../bower_components/jquery/jquery',
     underscore: '../bower_components/underscore/underscore',
     backbone: '../bower_components/backbone/backbone',
+    'backbone-logger': '../bower_components/backbone-logger/backbone-logger',
     'backbone.paginator': '../bower_components/backbone.paginator/dist/backbone.paginator',
+    'elasticsearch.jquery': '../bower_components/elasticsearch/elasticsearch.jquery', 
     backboneElasticsearchStorage: 'sync/elasticsearch-sync',
     text: '../bower_components/requirejs-text/text',
     templates: '../scripts/templates'
