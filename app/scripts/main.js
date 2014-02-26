@@ -50,7 +50,7 @@ require([
   'collections/sites',
   'templates',
   'backbone-logger'
-], function (Backbone, SiteListPagingView, LoginView, appRouter, SiteModel, UserModel, SitesCollection, templates, logger) {
+], function (Backbone, SiteListPagingView, LoginView, AppRouter, SiteModel, UserModel, SitesCollection, templates, logger) {
   /*jshint nonew:false*/
 
   var webPortalUi = {
@@ -82,8 +82,8 @@ require([
             collection: webPortalUi.Collections.sitesCollection
           });
 
-          appRouter = new appRouter();
-          Backbone.history.start();
+          var appRouter = new AppRouter();
+          this.Routers.appRouter = appRouter;
 
           //if (this.session.isLoggedIn()) {
           //  appRouter.listSites();

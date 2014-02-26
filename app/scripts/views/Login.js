@@ -4,6 +4,7 @@ define(['backbone', 'collections/sitesPagingCollection'], function(Backbone, sit
     var LoginView = Backbone.View.extend({
         
         template: JST['app/scripts/templates/Login.ejs'],
+        el: $('#right-content'),
         
         initialize:function () {
             console.log('Initializing Login View');
