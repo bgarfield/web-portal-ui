@@ -47,10 +47,10 @@ require([
   'models/site',
   'collections/sites',
   'templates'
-], function (Backbone, AppView, Workspace) {
+], function (Backbone, AppView, appRouter, SiteModel, SitesCollection) {
   /*jshint nonew:false*/
 
-  window.webPortalUi = {
+  var webPortalUi = {
       Models: {},
       Collections: {},
       Views: {},
@@ -68,7 +68,7 @@ require([
           // Backbone.Log.log("Collection size: " + webPortalUi.Collections.sitesPagingCollection.length);
 
           // create the main collection of sites. It will load an initial set of records automatically
-          webPortalUi.Collections.sitesCollection = new webPortalUi.Collections.SitesCollection();
+          this.Collections.sitesCollection = new SitesCollection();
           Backbone.Log.log("Collection size: " + webPortalUi.Collections.sitesCollection.length);
 
           webPortalUi.Views.pagedSiteListView = new webPortalUi.Views.SiteListPagingView({
@@ -76,7 +76,7 @@ require([
             collection: webPortalUi.Collections.sitesCollection
           });
 
-          webPortalUi.Routers.appRouter = new webPortalUi.Routers.AppRouter();
+          appRouter = new webPortalUi.Routers.AppRouter();
           Backbone.history.start();
 
           $.ajaxSetup({
@@ -95,7 +95,8 @@ require([
       }
   };
 
-  return window.webPortalUi;
+  webPortalUi.init();
+  return webPortalUi;
 });
 
 // 
