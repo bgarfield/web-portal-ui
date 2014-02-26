@@ -1,4 +1,4 @@
-define(['backbone'], function(Backbone) {  
+define(['backbone', 'views/Login'], function(Backbone) {  
     'use strict';
 
     var AppRouter = Backbone.Router.extend({
@@ -6,7 +6,6 @@ define(['backbone'], function(Backbone) {
         "site/:id" : "getSite",
         "sites": "listSites",
         "login": "login",
-        "*": "doSomething",
         "": "listSites"
       },
       

@@ -43,12 +43,14 @@ require.config({
 require([
   'backbone',
   'views/siteListPagingView',
+  'views/Login',
   'routers/router',
   'models/site',
+  'models/user',
   'collections/sites',
   'templates',
   'backbone-logger'
-], function (Backbone, SiteListPagingView, appRouter, SiteModel, SitesCollection, templates, logger) {
+], function (Backbone, SiteListPagingView, LoginView, appRouter, SiteModel, UserModel, SitesCollection, templates, logger) {
   /*jshint nonew:false*/
 
   var webPortalUi = {
@@ -56,10 +58,12 @@ require([
       Collections: {},
       Views: {},
       Routers: {},
+      session: null,
       init: function () {
           'use strict';
           console.log('webPortalUI.init()');
           this.Models.SiteModel = SiteModel;
+          this.session = new UserModel();
 
           // Backbone.emulateHTTP = true;
 
@@ -81,10 +85,16 @@ require([
           appRouter = new appRouter();
           Backbone.history.start();
 
+          //if (this.session.isLoggedIn()) {
+          //  appRouter.listSites();
+          //} else {
+          //  appRouter.login();
+          //}
+
           $.ajaxSetup({
               statusCode: {
                   401: function(){
-                      // Redirec the to the login page.
+                      // Redirect the to the login page.
                       window.location.replace('/#login');
 
                   },

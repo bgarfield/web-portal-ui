@@ -1,11 +1,7 @@
-/*global webPortalUi, Backbone, JST*/
-
-webPortalUi.Views = webPortalUi.Views || {};
-
-(function () {
+define(['backbone', 'collections/sitesPagingCollection'], function(Backbone, sitesPagingCollection) {
     'use strict';
 
-    webPortalUi.Views.LoginView = Backbone.View.extend({
+    var LoginView = Backbone.View.extend({
         
         template: JST['app/scripts/templates/Login.ejs'],
         
@@ -26,7 +22,7 @@ webPortalUi.Views = webPortalUi.Views || {};
             event.preventDefault(); // Don't let this button submit the form
             $('.alert-error').hide(); // Hide any errors on a new submit
             var url = '../api/login';
-            console.log('Loggin in... ');
+            console.log('Logging in... ');
             var formValues = {
                 email: $('#inputEmail').val(),
                 password: $('#inputPassword').val()
@@ -51,4 +47,5 @@ webPortalUi.Views = webPortalUi.Views || {};
         }
     });
 
-})();
+    return LoginView;
+});
