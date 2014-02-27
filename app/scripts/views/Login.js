@@ -1,34 +1,67 @@
-define(['backbone', 'collections/sitesPagingCollection'], function(Backbone, sitesPagingCollection) {
+define(['backbone', 'collections/sitesPagingCollection', 'jquery', 'jquery-ui'], function(Backbone, sitesPagingCollection) {
     'use strict';
 
     var LoginView = Backbone.View.extend({
         
         template: JST['app/scripts/templates/Login.ejs'],
-        el: $('#right-content'),
+        el: $('#login-dialog'),
         
         initialize:function () {
             console.log('Initializing Login View');
+            this.render();
+            var me = this;
+             $( "#login-dialog" ).dialog({
+                autoOpen: false,
+                height: 300,
+                width: 350,
+                modal: true,
+                buttons: {
+                    "Sign in": function() {
+                        var bValid = true;
+                        
+                        if ( bValid ) {
+                            me.login();
+                        }
+                    },
+                    //Cancel: function() {
+                    //    me.hide();
+                    //},
+                    close: function() {
+                        me.hide();
+                    }
+                }
+            });
         },
 
-        events: {
-            "click #loginButton": "login"
-        },
+        //events: {
+        //    "click #loginButton": "login"
+        //},
 
         render:function () {
             $(this.el).html(this.template());
             return this;
         },
 
-        login:function (event) {
-            event.preventDefault(); // Don't let this button submit the form
+        show: function() {
+            $( "#login-dialog" ).dialog("open");
+        },
+
+        hide: function() {
+            $( "#login-dialog" ).dialog("close");
+        },
+
+        login: function () {
             $('.alert-error').hide(); // Hide any errors on a new submit
             var url = '../api/login';
             console.log('Logging in... ');
+            var session = window.webPortalUi.session;
             var formValues = {
-                email: $('#inputEmail').val(),
+                username: $('#inputUsername').val(),
                 password: $('#inputPassword').val()
             };
-
+            session.login(formValues.username, "dummy-ticket");
+            this.hide();
+            /*
             $.ajax({
                 url:url,
                 type:'POST',
@@ -45,6 +78,7 @@ define(['backbone', 'collections/sitesPagingCollection'], function(Backbone, sit
                     }
                 }
             });
+            */
         }
     });
 

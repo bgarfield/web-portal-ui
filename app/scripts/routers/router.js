@@ -26,11 +26,11 @@ define(['backbone', 'views/Login'], function(Backbone, LoginView) {
       },
       
       login: function() {
-        $('#content').html(new LoginView().render().el);
+        webPortalUi.Views.loginView.show();
       },
 
       logout: function() {
-        // TODO
+       webPortalUi.session.logout();
       }
     });
     

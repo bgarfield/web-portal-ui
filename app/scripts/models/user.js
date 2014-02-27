@@ -31,6 +31,7 @@ define([
     	},
 
     	login: function(username, ticket) {
+            var me = this;
     		me.set('username', username);
     		me.set('ticket', ticket);
     		me.set('auth', true);

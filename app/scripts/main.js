@@ -15,6 +15,10 @@ require.config({
       ],
       exports: 'Backbone'
     },
+    'jquery-ui': {
+      deps: ['jquery'],
+      exports: 'jQuery.dialog'
+    },
     'backbone.paginator': {
       deps: ['backbone', 'underscore', 'jquery'],
       exports: 'Backbone.Paginator'
@@ -29,6 +33,7 @@ require.config({
   },
   paths: {
     jquery: '../bower_components/jquery/jquery',
+    'jquery-ui': '../bower_components/jquery-ui/ui/jquery-ui',
     underscore: '../bower_components/underscore/underscore',
     backbone: '../bower_components/backbone/backbone',
     'backbone-logger': '../bower_components/backbone-logger/backbone-logger',
@@ -49,8 +54,9 @@ require([
   'models/user',
   'collections/sites',
   'templates',
-  'backbone-logger'
-], function (Backbone, SiteListPagingView, LoginView, AppRouter, SiteModel, UserModel, SitesCollection, templates, logger) {
+  'backbone-logger',
+  'jquery-ui'
+], function (Backbone, SiteListPagingView, LoginView, AppRouter, SiteModel, UserModel, SitesCollection, templates, logger, jqueryUi) {
   /*jshint nonew:false*/
 
   var webPortalUi = {
@@ -64,6 +70,8 @@ require([
           console.log('webPortalUI.init()');
           this.Models.SiteModel = SiteModel;
           this.session = new UserModel();
+
+          this.Views.loginView = new LoginView();
 
           // Backbone.emulateHTTP = true;
 
@@ -85,11 +93,11 @@ require([
           var appRouter = new AppRouter();
           this.Routers.appRouter = appRouter;
 
-          //if (this.session.isLoggedIn()) {
-          //  appRouter.listSites();
-          //} else {
-          //  appRouter.login();
-          //}
+          if (this.session.isLoggedIn()) {
+            appRouter.listSites();
+          } else {
+            appRouter.login();
+          }
 
           $.ajaxSetup({
               statusCode: {
