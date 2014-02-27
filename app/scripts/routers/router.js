@@ -6,7 +6,6 @@ define(['backbone'], function(Backbone) {
         "site/:id" : "getSite",
         "sites": "listSites",
         "login": "login",
-        "*": "doSomething",
         "": "listSites"
       },
       
