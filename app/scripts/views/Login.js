@@ -6,7 +6,7 @@ define(['backbone', 'collections/sitesPagingCollection', 'jquery', 'jquery-ui'],
         template: JST['app/scripts/templates/Login.ejs'],
         el: $('#login-dialog'),
         
-        initialize:function () {
+        initialize: function () {
             console.log('Initializing Login View');
             this.render();
             var me = this;
@@ -40,7 +40,7 @@ define(['backbone', 'collections/sitesPagingCollection', 'jquery', 'jquery-ui'],
         //    "click #loginButton": "login"
         //},
 
-        render:function () {
+        render: function () {
             $(this.el).html(this.template());
             return this;
         },
