@@ -28,6 +28,8 @@ define([
     		// TODO: do a DELETE to invalidate the ticket.
     		me.clear('ticket');
     		me.set('auth', false);
+            sessionStorage.removeItem('alf_ticket');
+            sessionStorage.removeItem('alf_username');
     	},
 
     	login: function(username, ticket) {
@@ -35,6 +37,9 @@ define([
     		me.set('username', username);
     		me.set('ticket', ticket);
     		me.set('auth', true);
+            sessionStorage.setItem("alf_ticket", ticket);
+            sessionStorage.setItem("alf_username", username);
+            console.log("User logged in as "+username);
     	},
 
     	isLoggedIn: function() {

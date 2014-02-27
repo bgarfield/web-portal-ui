@@ -31,6 +31,7 @@ define(['backbone', 'views/Login'], function(Backbone, LoginView) {
 
       logout: function() {
        webPortalUi.session.logout();
+       window.location.replace("/");
       }
     });
     
