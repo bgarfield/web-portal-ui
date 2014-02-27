@@ -55,33 +55,11 @@ define(['backbone', 'collections/sitesPagingCollection', 'jquery', 'jquery-ui'],
 
         login: function () {
             $('.alert-error').hide(); // Hide any errors on a new submit
-            var url = '../api/login';
             console.log('Logging in... ');
             var session = window.webPortalUi.session;
-            var formValues = {
-                username: $('#inputUsername').val(),
-                password: $('#inputPassword').val()
-            };
-            session.login(formValues.username, "dummy-ticket");
+            session.login($('#inputUsername').val(), $('#inputPassword').val());
             this.hide();
-            /*
-            $.ajax({
-                url:url,
-                type:'POST',
-                dataType:"json",
-                data: formValues,
-                success:function (data) {
-                    console.log(["Login request details: ", data]);
-
-                    if(data.error) {  // If there is an error, show the error messages
-                        $('.alert-error').text(data.error.text).show();
-                    }
-                    else { // If not, send them back to the home page
-                        window.location.replace('#');
-                    }
-                }
-            });
-            */
+            
         }
     });
 
