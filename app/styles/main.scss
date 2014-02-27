@@ -71,6 +71,12 @@ body {
     font-size: 13px;
 }
 
+.alert-error {
+    border: 1px solid transparent;
+    padding: 0.3em; 
+    margin-bottom: 3px;
+ }
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {

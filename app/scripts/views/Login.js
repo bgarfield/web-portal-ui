@@ -12,15 +12,18 @@ define(['backbone', 'collections/sitesPagingCollection', 'jquery', 'jquery-ui'],
             var me = this;
              $( "#login-dialog" ).dialog({
                 autoOpen: false,
-                height: 300,
+                height: 330,
                 width: 350,
                 modal: true,
                 buttons: {
                     "Sign in": function() {
-                        var bValid = true;
+                        var bValid = document.getElementById("login-form").checkValidity();
                         
                         if ( bValid ) {
+                            $(".alert-error").hide();
                             me.login();
+                        } else {
+                            $(".alert-error").show();
                         }
                     },
                     //Cancel: function() {
