@@ -54,6 +54,7 @@ require([
   'backbone',
   'views/siteListPagingView',
   'views/Login',
+  'views/CreateSite',
   'routers/router',
   'models/site',
   'models/user',
@@ -62,7 +63,7 @@ require([
   'backbone-logger',
   'jquery-ui',
   'twitter'
-], function (Backbone, SiteListPagingView, LoginView, AppRouter, SiteModel, UserModel, SitesCollection, templates, logger, jqueryUi, twitter) {
+], function (Backbone, SiteListPagingView, LoginView, CreateSiteView, AppRouter, SiteModel, UserModel, SitesCollection, templates, logger, jqueryUi, twitter) {
   /*jshint nonew:false*/
 
   var webPortalUi = {
@@ -78,6 +79,7 @@ require([
           this.session = new UserModel();
 
           this.Views.loginView = new LoginView();
+          this.Views.createSiteView = new CreateSiteView();
 
           // Backbone.emulateHTTP = true;
 

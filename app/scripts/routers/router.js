@@ -5,6 +5,7 @@ define(['backbone', 'views/Login'], function(Backbone, LoginView) {
       routes: {
         "site/:id" : "editSite",
         "sites": "listSites",
+        "create": "createSite",
         "login": "login",
         "logout": "logout",
         "": "listSites"
@@ -27,6 +28,10 @@ define(['backbone', 'views/Login'], function(Backbone, LoginView) {
       
       login: function() {
         webPortalUi.Views.loginView.show();
+      },
+
+      createSite: function() {
+        webPortalUi.Views.createSiteView.show();
       },
 
       logout: function() {
