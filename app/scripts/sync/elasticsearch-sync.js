@@ -107,7 +107,7 @@ Backbone.es = Backbone.es || {}; // establish Backbone.es namespace
 
         case 'read':
           if (!model.get(model.idAttribute)) {
-            Backbone.Log.log('error calling elasticsearch for read. Must supply an id to delete');
+            Backbone.Log.log('error calling elasticsearch for read. Must supply an id to read');
             return;
           }
           

@@ -9,6 +9,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/jquery-ui//themes/smoothness/jquery-ui.css">
     <!-- endbuild -->
     <!-- build:js scripts/vendor/modernizr.js -->
     <script src="bower_components/modernizr/modernizr.js"></script>
@@ -44,12 +45,18 @@
   				<label for="toggle-all">Mark all as complete</label>
   				<ul id="todo-list"></ul>
   			</section>
-  		</div>		
+  		</div>
+
+      <div id="login-dialog">
+      </div>		
 		</section>
 		
-		<footer id="footer" class="nav nav-pills pull-right">
-      <p class="active"><a href="#">Home</a></p>
-      <p><a href="#">About</a></p>
+		<footer id="footer" class="nav nav-pillst">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#logout">Logout</a></li>
+      </ul>
 		</footer>
 		
 		<script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>

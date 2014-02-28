@@ -12,7 +12,8 @@
     "elasticsearch": "~1.5.8",
     "requirejs": "~2.1.11",
     "backbone-logger": "~0.0.3",
-    "backbone.localStorage": "~1.1.7"
+    "backbone.localStorage": "~1.1.7",
+    "jquery-ui": "~1.10.4"
   },
   "authors": [
     "harrymoore <harry.moore@rothburysoftware.com>"
