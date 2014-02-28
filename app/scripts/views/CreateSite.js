@@ -12,6 +12,10 @@ define([
         template: JST['app/scripts/templates/CreateSite.ejs'],
         el: $('#createsite-dialog'),
 
+        events: {
+        	'click #createSiteSubmit': 'createSite'
+        },
+
         initialize: function () {
             this.render();
         },
@@ -31,7 +35,7 @@ define([
         },
 
         createSite: function() {
-
+        	$('#createsite-dialog').modal('hide');
         }
     });
 

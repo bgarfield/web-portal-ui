@@ -101,6 +101,10 @@ require([
           var appRouter = new AppRouter();
           this.Routers.appRouter = appRouter;
 
+          $('#createSite').click(function() {
+            window.location.replace('/#create');  
+          });
+
           if (this.session.isLoggedIn()) {
             appRouter.listSites();
           } else {
