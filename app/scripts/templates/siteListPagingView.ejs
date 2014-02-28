@@ -2,7 +2,7 @@
   <% _.each(this.collection.models, function(site) { %>
   	<header id="header">
   		<h1><%= site.get('name') %></h1>
-  		<img src="<%= site.get('logoUrl')  %>">
+  		<img alt="No Logo Image" src="<% site.get('logoUrl')!="" ? print(site.get('logoUrl')) : print("images/app_logo.png")  %>">
   		<input id="#edit-todo/<%= site.get('siteId')  %>">
   	</header>
   <% }); %>
