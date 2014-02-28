@@ -7,7 +7,11 @@ define(['backbone', 'models/site', 'backboneElasticsearchStorage'], function(Bac
         
         initialize: function() {
           Backbone.es.loadAll(this);
-        }
+        },
+
+        comparator: function(item) {
+        	return item.get('name').toLowerCase();
+    	}
     });
 
     return SitesCollection;
