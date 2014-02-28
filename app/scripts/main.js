@@ -19,6 +19,10 @@ require.config({
       deps: ['jquery'],
       exports: 'jQuery.dialog'
     },
+    twitter: {
+      deps: ['jquery'],
+      exports: 'twitter'
+    },
     'backbone.paginator': {
       deps: ['backbone', 'underscore', 'jquery'],
       exports: 'Backbone.Paginator'
@@ -34,6 +38,7 @@ require.config({
   paths: {
     jquery: '../bower_components/jquery/jquery',
     'jquery-ui': '../bower_components/jquery-ui/ui/jquery-ui',
+    twitter: '../bower_components/twitter/dist/js/bootstrap',
     underscore: '../bower_components/underscore/underscore',
     backbone: '../bower_components/backbone/backbone',
     'backbone-logger': '../bower_components/backbone-logger/backbone-logger',
@@ -55,8 +60,9 @@ require([
   'collections/sites',
   'templates',
   'backbone-logger',
-  'jquery-ui'
-], function (Backbone, SiteListPagingView, LoginView, AppRouter, SiteModel, UserModel, SitesCollection, templates, logger, jqueryUi) {
+  'jquery-ui',
+  'twitter'
+], function (Backbone, SiteListPagingView, LoginView, AppRouter, SiteModel, UserModel, SitesCollection, templates, logger, jqueryUi, twitter) {
   /*jshint nonew:false*/
 
   var webPortalUi = {
