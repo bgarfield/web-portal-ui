@@ -34,8 +34,29 @@ define([
         	$('#createsite-dialog').modal('show');
         },
 
+        validate: function() {
+        	var formEl = document.getElementById('createSiteForm');
+        	var valid = true;
+        	if (formEl && formEl.checkValidity !== undefined) {
+
+        		for (var index = 0; index < formEl.elements.length; index ++) {
+        			var formField = formEl.elements[index];
+        			if (formField.checkValidity() == false) {
+        				valid = false;
+        				$(formField.parentNode).addClass('has-error');
+        			} else {
+        				$(formField.parentNode).removeClass('has-error');
+        			}
+        		}
+			}
+			return valid;
+        },
+
         createSite: function() {
-        	$('#createsite-dialog').modal('hide');
+        	if (this.validate()) {
+        		$('#createsite-dialog').modal('hide');	
+        	}
+        	
         }
     });
 
