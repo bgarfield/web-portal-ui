@@ -27,14 +27,24 @@ require.config({
       deps: ['backbone', 'underscore', 'jquery'],
       exports: 'Backbone.Paginator'
     },
-    backboneElasticsearchStorage: {
-      deps: ['backbone', 'elasticsearch.jquery'],
-      exports: 'Backbone.es'
+    AbstractApiSync: {
+      exports: 'AbstractApiSync'
     },
+
+    BackboneStoreAPI: {
+      deps: ['backbone', 'underscore', 'elasticsearch.jquery', 'AbstractApiSync'],
+      exports: 'Backbone.store'
+    },
+    // BackboneStoreAPI: {
+    //   deps: ['backbone', 'underscore', 'AbstractApiSync'],
+    //   exports: 'Backbone.store'
+    // },
+
     templates: {
       exports: 'JST'
     }
   },
+  baseUrl: "scripts",
   paths: {
     jquery: '../bower_components/jquery/jquery',
     'jquery-ui': '../bower_components/jquery-ui/ui/jquery-ui',
@@ -42,9 +52,13 @@ require.config({
     underscore: '../bower_components/underscore/underscore',
     backbone: '../bower_components/backbone/backbone',
     'backbone-logger': '../bower_components/backbone-logger/backbone-logger',
-    'backbone.paginator': '../bower_components/backbone.paginator/dist/backbone.paginator',
+    AbstractApiSync: 'sync/abstract-api-sync',
+
     'elasticsearch.jquery': '../bower_components/elasticsearch/elasticsearch.jquery', 
-    backboneElasticsearchStorage: 'sync/elasticsearch-sync',
+    BackboneStoreAPI: 'sync/elasticsearch-sync',
+
+    // BackboneStoreAPI: 'sync/alfresco-api-sync',
+
     text: '../bower_components/requirejs-text/text',
     templates: '../scripts/templates'
   }

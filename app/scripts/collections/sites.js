@@ -1,4 +1,4 @@
-define(['backbone', 'models/site', 'backboneElasticsearchStorage'], function(Backbone, SiteModel, backboneElasticsearchStorage) {  
+define(['backbone', 'models/site', 'BackboneStoreAPI'], function(Backbone, SiteModel, BackboneStorageAPI) {  
     'use strict';
     var SitesCollection = Backbone.Collection.extend({
 
@@ -6,7 +6,7 @@ define(['backbone', 'models/site', 'backboneElasticsearchStorage'], function(Bac
         url: 'site',
         
         initialize: function() {
-          Backbone.es.loadAll(this);
+          Backbone.store.loadAll(this, {'size': 100});
         },
 
         comparator: function(item) {

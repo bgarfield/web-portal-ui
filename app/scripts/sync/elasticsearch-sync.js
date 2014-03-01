@@ -1,6 +1,6 @@
 /*global Backbone $.es*/
 
-Backbone.es = Backbone.es || {}; // establish Backbone.es namespace
+Backbone.store = Backbone.store || {}; // establish Backbone.store namespace
 
 (function () {
     'use strict';
@@ -15,18 +15,18 @@ Backbone.es = Backbone.es || {}; // establish Backbone.es namespace
        return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
     };
 
-    Backbone.es.client = new $.es.Client({
+    Backbone.store.client = new $.es.Client({
       host: 'localhost:9200',
       log: 'trace'
     });
     
-    Backbone.es.loadAll = function(collection, options) {
+    Backbone.store.loadAll = function(collection, options) {
       options || (options = {});
 
-      Backbone.es.client.search({
+      Backbone.store.client.search({
         index: options.index || collection.model.url || collection.url || 'Backbone',
         // type: options.type || collection.model.url || collection.url || 'Backbone',
-        size: options.size || 50,
+        size: options.size || 100,
         // search_type: 'scan',
         body: {
           query: {
@@ -51,7 +51,7 @@ Backbone.es = Backbone.es || {}; // establish Backbone.es namespace
             model.set(model.idAttribute, guid());
           }
 
-          Backbone.es.client.index({
+          Backbone.store.client.index({
             index: options.index || model.url || 'Backbone',
             type: options.type || model.url || 'Backbone',
             id: model.get(model.idAttribute),
@@ -68,7 +68,7 @@ Backbone.es = Backbone.es || {}; // establish Backbone.es namespace
         break;
 
         case 'update':
-          Backbone.es.client.index({
+          Backbone.store.client.index({
             index: options.index || model.url || 'Backbone',
             type: options.type || model.url || 'Backbone',
             id: model.get(model.idAttribute),
@@ -90,7 +90,7 @@ Backbone.es = Backbone.es || {}; // establish Backbone.es namespace
             return;
           }
 
-          Backbone.es.client.delete({
+          Backbone.store.client.delete({
             index: options.index || model.url || 'Backbone',
             type: options.type || model.url || 'Backbone',
             id: model.get(model.idAttribute)
@@ -111,7 +111,7 @@ Backbone.es = Backbone.es || {}; // establish Backbone.es namespace
             return;
           }
           
-          Backbone.es.client.search({
+          Backbone.store.client.search({
             index: options.index || model.url || 'Backbone',
             type: options.type || model.url || 'Backbone',
             size: 1,

@@ -1,9 +1,49 @@
-Backbone.alfresco = Backbone.alfresco || {}; // establish Backbone.alfresco namespace
+Backbone.store = Backbone.store || {}; // establish Backbone.store namespace
 
 (function () {
     'use strict';
 
-    var Alfresco = Alfresco || {}; // establish Alfresco namespace
+    var Alfresco = _.extend({}, AbstractApiSync);
+    
+    Alfresco.login = function(userName, password) {
+      var url, request, method = METHOD_LOGIN,
+      authToken = this._buildAuth(userName, password);
+
+      url = this._buildServiceUrl(method, false, {
+        'authToken': authToken
+      });
+
+      request = $.ajax({
+        url: url,
+        type: 'post',
+        format: 'json',
+        timeout: 15000,
+        context: {method: method},
+        success: this._callback,
+        error: this._errorCallback
+      });
+
+      return true;
+    }
+
+    Alfresco.validateTicket = function(ticket) {
+      var url, request, method = METHOD_VALIDATE_TICKET;
+
+      url = this._buildServiceUrl(method, false, {
+        'ticket': ticket
+      });
+
+      request = $.ajax({
+        url: url,
+        type: 'post',
+        format: 'json',
+        context: {method: method},
+        success: this._callback,
+        error: this._errorCallback
+      });
+
+      return true;
+    }
     
     // group together the API calls that require only the site id
     Alfresco.callSimpleAPI = function(method, siteId, options) {
@@ -155,6 +195,6 @@ Backbone.alfresco = Backbone.alfresco || {}; // establish Backbone.alfresco name
     };
     
     Backbone.sync = Alfresco.sync;
-    Backbone.alfresco = Alfresco;
+    Backbone.store = Alfresco;
 })();
 
